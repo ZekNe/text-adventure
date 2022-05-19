@@ -61,7 +61,7 @@ CheckInventory()
 
 encounterEnemy = {}
 
-adventure_list = ["Wolf Cave"]
+adventure_list = ["Wolf Cave, Random Encounter, Custom Encounter"]
 def AdventureSelect():
     print("Choose your Adventure:\n")
     print(*adventure_list, sep=",")
@@ -72,6 +72,15 @@ def AdventureSelect():
         if selectedAdventure == "Wolf Cave":           
             encounterEnemy = adventures.WolfCave()
             Combat(encounterEnemy)
+            break
+        elif selectedAdventure == "Random Encounter":           
+            encounterEnemy = adventures.RandomEcnounter()
+            Combat(encounterEnemy)
+            break
+        elif selectedAdventure == "Custom Encounter":           
+            encounterEnemy = adventures.CustomEncounter()
+            Combat(encounterEnemy)
+            break
         else:
             print("Try again.\n")
 
