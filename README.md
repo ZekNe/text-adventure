@@ -20,8 +20,8 @@ Simple text adventure with basic exploration and combat.
  
 **New enemies can be added by editing the enemy.py file and adding the following enemy structure _(Change the Name and Stats to your liking)_.**
 
-**YourName = {
-    "Name" : "YourName",
+**EnemyName = {
+    "Name" : "EnemyName",
     "HP" : 70,
     "MP" : 10,
     "STR" : 12,
@@ -29,5 +29,5 @@ Simple text adventure with basic exploration and combat.
     "DEX" : 6
 }**
 
-**enemies = [Wolf, Goblin, Dragon, YourName]**
+**enemies = [Wolf, Goblin, Dragon, EnemyName]**
 
