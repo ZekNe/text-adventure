@@ -1,11 +1,12 @@
 from random import randrange
-from items import item_list
+from items import item_list, itemHPotion
 import classes
 import adventures
 import items
 
+
 # Asks for users name
-user_name = input("What is your name?\nName: ")
+user_name = input("What is your name?\nName: ") or "User"
 print("Hello, %s!" %user_name)
 print("--------------------")
 
@@ -72,6 +73,7 @@ def AdventureSelect():
         if selectedAdventure == "Wolf Cave":           
             encounterEnemy = adventures.WolfCave()
             Combat(encounterEnemy)
+            print("You leave the cave and continue your journey.")
             break
         elif selectedAdventure == "Random Encounter":           
             encounterEnemy = adventures.RandomEcnounter()
@@ -85,7 +87,10 @@ def AdventureSelect():
             print("Try again.\n")
 
 def Combat(enemy):
-    print("\nCombat begins!\n")
+    if enemy == "":
+        return
+
+    print("\nCombat begins!\n")   
     combatEnemy = enemy
 
     while user_stats["HP"] > 0 and combatEnemy["HP"] > 0:
@@ -107,8 +112,15 @@ def Combat(enemy):
                 print("Try Again!")
                 continue
 
-            use = items.usableItems[useItem]    
-            user_stats["HP"] = use(user_stats["HP"])
+            use = items.usableItems[useItem]
+            if useItem == "HP Potion":   
+                user_stats["HP"] = use(user_stats["HP"])
+            elif useItem == "Mana Potion":   
+                user_stats["MP"] = use(user_stats["MP"])
+            elif useItem == "Poison Potion":   
+                combatEnemy["HP"] = use(combatEnemy["HP"])
+
+
             inventory[useItem] -= 1     
             print("----------Combat Window------------")   
             print("You use a %s" %useItem)
@@ -133,6 +145,7 @@ def Combat(enemy):
                 combatEnemy["HP"] += (user_stats["STR"] * user_info["WeaponDMG"]) / 2
         print("-----------------------------------")
         print("%s | HP - %s ----- %s - HP | %s" % (user_info["Name"], user_stats["HP"], combatEnemy["HP"], combatEnemy["Name"]))
+        print("----| MP - %s ----- %s - MP |----" %(user_stats["MP"], combatEnemy["MP"]))
         print("-----------------------------------")
 
     if user_stats["HP"] > 0:

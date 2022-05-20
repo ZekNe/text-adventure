@@ -1,7 +1,7 @@
 Wolf = {
     "Name" : "Wolf",
     "HP" : 70,
-    "MP" : 0,
+    "MP" : 10,
     "STR" : 12,
     "INT" : 1,
     "DEX" : 6
@@ -16,4 +16,13 @@ Goblin = {
     "DEX" : 10
 }
 
-enemies = [Wolf, Goblin]
+Dragon = {
+    "Name" : "Dragon",
+    "HP" : 1000,
+    "MP" : 150,
+    "STR" : 33,
+    "INT" : 26,
+    "DEX" : 19
+}
+
+enemies = [Wolf, Goblin, Dragon]

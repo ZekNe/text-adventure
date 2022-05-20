@@ -8,7 +8,7 @@ Warrior = {
 
 Mage = {
     "HP" : 80,
-    "MP" : 100,
+    "MP" : 80,
     "STR" : 2,
     "INT" : 8,
     "DEX" : 3

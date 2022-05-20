@@ -28,6 +28,16 @@ def itemHPotion(HP):
     user_hp = HP + 50
     return user_hp
 
+def itemManaPotion(Mana):
+    user_mana = Mana + 30
+    return user_mana
+
+def itemPoisonPotion(HP):
+    user_hp = HP - 50
+    return user_hp
+
 usableItems = {
-    "HP Potion" : itemHPotion
+    "HP Potion" : itemHPotion,
+    "Mana Potion" : itemManaPotion,
+    "Poison Potion" : itemPoisonPotion
 }
