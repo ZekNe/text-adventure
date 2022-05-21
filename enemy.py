@@ -1,3 +1,5 @@
+#Enemies
+
 Wolf = {
     "Name" : "Wolf",
     "HP" : 70,
@@ -25,4 +27,15 @@ Dragon = {
     "DEX" : 19
 }
 
+# # Custom Enemy Format
+# CustomName = {
+#     "Name" : "CustomName",
+#     "HP" : ???,
+#     "MP" : ???,
+#     "STR" : ???,
+#     "INT" : ???,
+#     "DEX" : ???
+# }
+
+# Add custom enemy name here
 enemies = [Wolf, Goblin, Dragon]

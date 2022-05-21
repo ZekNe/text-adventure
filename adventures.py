@@ -1,8 +1,10 @@
 from random import randrange
 import enemy
 
+# Wolf Cave
 def WolfCave():
     
+    # Before the cave
     while True:
         action = input("You find yourself at a cave entrance.\n What do you want to do?\n1.Enter\n2.Leave\n>")
         if action == "Enter":
@@ -14,6 +16,7 @@ def WolfCave():
         else:
             print("Try Again!")
     
+    # Inside the cave
     while True:
         action = input("There is two paths, one leads left the other right.\n What path do you take?\n1.Left\n2.Right\n>")
         if action == "Left":
@@ -31,9 +34,11 @@ def WolfCave():
     print("You decide to take the right path. \nAfter a bit of walking you find a large open space. \nThere is something moving in the shadows!")    
     print("You encounter a wolf in the cave!")
 
+    # Wolf Encounter
     encounterEnemy = enemy.Wolf
     return encounterEnemy
 
+# Custom Encounter
 def CustomEncounter():
     x = 0  
     for i in enemy.enemies:
@@ -48,6 +53,7 @@ def CustomEncounter():
             return encounterEnemy
         x += 1
 
+# Random Encounter
 def RandomEcnounter():
     random = randrange(len(enemy.enemies))
     encounterEnemy = enemy.enemies[random]

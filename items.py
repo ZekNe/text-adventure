@@ -1,8 +1,7 @@
-from ast import arg
-
-
+# Item List
 item_list = ["HP Potion", "Mana Potion", "Poison Potion", "Sword", "Staff", "Dagger"]
 
+# Weapons
 weaponSword = {
     "Name" : "Sword",
     "DMG" : 3,
@@ -24,6 +23,8 @@ weaponDagger = {
     "Element" : "Poison" 
 }
 
+
+# Item Function
 def itemHPotion(HP):
     user_hp = HP + 50
     return user_hp
@@ -36,6 +37,7 @@ def itemPoisonPotion(HP):
     user_hp = HP - 50
     return user_hp
 
+# Usable Items
 usableItems = {
     "HP Potion" : itemHPotion,
     "Mana Potion" : itemManaPotion,

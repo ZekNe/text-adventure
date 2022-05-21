@@ -1,3 +1,4 @@
+# Classes
 Warrior = {
     "HP" : 130,
     "MP" : 30,

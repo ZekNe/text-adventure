@@ -36,6 +36,7 @@ while user_class not in class_list:
     else:
         print("Try again.\n")
 
+# Basic user stats
 user_info = {
     "Name" : user_name,
     "Class" : user_class,
@@ -43,6 +44,7 @@ user_info = {
     "WeaponDMG" : user_weapon["DMG"]
 }
 
+# Check Stats command
 def CheckStats():
     print("----------------------")
     print("%s stats:\n" %user_name)
@@ -51,6 +53,7 @@ def CheckStats():
 
 CheckStats()
 
+# Check inventory command
 def CheckInventory():
     print("----------------------")
     print("inventory:\n")
@@ -62,6 +65,7 @@ CheckInventory()
 
 encounterEnemy = {}
 
+# Adventure Selection
 adventure_list = ["Wolf Cave, Random Encounter, Custom Encounter"]
 def AdventureSelect():
     print("Choose your Adventure:\n")
@@ -70,45 +74,51 @@ def AdventureSelect():
     selectedAdventure = ''
     while selectedAdventure not in adventure_list:
         selectedAdventure = input(">")
-        if selectedAdventure == "Wolf Cave":           
+        if selectedAdventure == "Wolf Cave": # Wolf Cave           
             encounterEnemy = adventures.WolfCave()
             Combat(encounterEnemy)
             print("You leave the cave and continue your journey.")
             break
-        elif selectedAdventure == "Random Encounter":           
+        elif selectedAdventure == "Random Encounter": # Random Encounter       
             encounterEnemy = adventures.RandomEcnounter()
             Combat(encounterEnemy)
             break
-        elif selectedAdventure == "Custom Encounter":           
+        elif selectedAdventure == "Custom Encounter": # Custom Encounter         
             encounterEnemy = adventures.CustomEncounter()
             Combat(encounterEnemy)
             break
         else:
             print("Try again.\n")
 
+# Combat 
 def Combat(enemy):
-    if enemy == "":
+    if enemy == "": # Cancels combat if there is not enemy
         return
 
     print("\nCombat begins!\n")   
     combatEnemy = enemy
 
-    while user_stats["HP"] > 0 and combatEnemy["HP"] > 0:
+    while user_stats["HP"] > 0 and combatEnemy["HP"] > 0: # Combat end if user or enemy reach 0 HP
         user_action = input("Attack - Defend - Item - Run\n>")
-        
         defend = False
+
+        # Attack action
         if user_action == "Attack":
             combatEnemy["HP"] -= user_stats["STR"] * user_info["WeaponDMG"]
             print("----------Combat Window------------")
             print("%s attacks!" %user_info["Name"])
+
+        # Defend action
         elif user_action == "Defend":
             defend = True
             print("----------Combat Window------------")
             print("%s defends!" %user_info["Name"])
+
+        # Item action
         elif user_action == "Item":
             CheckInventory()
             useItem = input("What do you want to use?\nUse: ")
-            if useItem not in inventory or inventory[useItem] < 1 or useItem not in items.usableItems:
+            if useItem not in inventory or inventory[useItem] < 1 or useItem not in items.usableItems: # Makes sure you have the item you want to use
                 print("Try Again!")
                 continue
 
@@ -120,18 +130,21 @@ def Combat(enemy):
             elif useItem == "Poison Potion":   
                 combatEnemy["HP"] = use(combatEnemy["HP"])
 
-
-            inventory[useItem] -= 1     
+            inventory[useItem] -= 1 # Removes the used item
             print("----------Combat Window------------")   
             print("You use a %s" %useItem)
 
+        # Run action
         elif user_action == "Run":
             return print("You escaped!")
+
+        # Invalid action
         else:
             print("Try again!")
             continue
-        
-        EnemyAction = randrange(10)
+
+        # Enemy action
+        EnemyAction = randrange(10) # Enemy action randomizer
         if EnemyAction < 6:
             print("%s attacks!" %enemy["Name"])
             if defend == True:
@@ -139,10 +152,13 @@ def Combat(enemy):
                 defend = False
             elif defend == False:
                 user_stats["HP"] -= combatEnemy["STR"]
+
         elif EnemyAction > 5:
             print("%s defends!" %enemy["Name"])
             if user_action == "Attack":
                 combatEnemy["HP"] += (user_stats["STR"] * user_info["WeaponDMG"]) / 2
+
+        # Combat stats
         print("-----------------------------------")
         print("%s | HP - %s ----- %s - HP | %s" % (user_info["Name"], user_stats["HP"], combatEnemy["HP"], combatEnemy["Name"]))
         print("----| MP - %s ----- %s - MP |----" %(user_stats["MP"], combatEnemy["MP"]))
