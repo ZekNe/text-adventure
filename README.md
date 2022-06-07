@@ -29,6 +29,5 @@ Simple text adventure with basic exploration and combat.
     "DEX" : 6
 }**
 
-
 **enemies = [Wolf, Goblin, Dragon, EnemyName]**
 
